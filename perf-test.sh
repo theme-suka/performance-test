@@ -270,91 +270,23 @@ npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
+echo -n 'Round 1: '
+npm run clean > /dev/null
+npm run generate > perf.log
+cat perf.log | grep 'generated in'
+
+echo -n 'Round 2: '
+npm run clean > /dev/null
+npm run generate > perf.log
+cat perf.log | grep 'generated in'
+
+echo -n 'Round 3: '
+npm run clean > /dev/null
+npm run generate > perf.log
+cat perf.log | grep 'generated in'
 
 echo '-------------------------------------'
 echo '               Test H'
-echo ' Enable prism highlight'
-echo '-------------------------------------'
-echo ' - fragment_fache: on'
-echo ' - hexo built in highlight.js'
-echo '    - enable: false'
-echo '    - line_number: false'
-echo '    - auto_detect: false'
-echo '    - tab_replace: false'
-echo ' - suka theme prism highlight: on'
-echo ' - suka theme local-search: off'
-echo '-------------------------------------'
-
-../bin/yq w -i themes/suka/_config.yml fragment_cache true
-
-../bin/yq w -i _config.yml highlight.enable false
-../bin/yq w -i _config.yml highlight.line_number false
-../bin/yq w -i _config.yml highlight.auto_detect false
-../bin/yq w -i _config.yml highlight.tab_replace false
-
-../bin/yq w -i _config.yml suka_theme.prism.enable true
-../bin/yq w -i _config.yml suka_theme.prism.line_number false
-
-../bin/yq w -i _config.yml suka_theme.search.enable false
-
-echo -n 'Round 1: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo -n 'Round 2: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo -n 'Round 3: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo '-------------------------------------'
-echo '               Test I'
-echo ' Enable prism highlight & line_number'
-echo '-------------------------------------'
-echo ' - fragment_fache: on'
-echo ' - hexo built in highlight.js'
-echo '    - enable: false'
-echo '    - line_number: false'
-echo '    - auto_detect: false'
-echo '    - tab_replace: false'
-echo ' - suka theme prism highlight: line_number'
-echo ' - suka theme local-search: off'
-echo '-------------------------------------'
-
-../bin/yq w -i themes/suka/_config.yml fragment_cache true
-
-../bin/yq w -i _config.yml highlight.enable false
-../bin/yq w -i _config.yml highlight.line_number false
-../bin/yq w -i _config.yml highlight.auto_detect false
-../bin/yq w -i _config.yml highlight.tab_replace false
-
-../bin/yq w -i _config.yml suka_theme.prism.enable true
-../bin/yq w -i _config.yml suka_theme.prism.line_number true
-
-../bin/yq w -i _config.yml suka_theme.search.enable false
-
-echo -n 'Round 1: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo -n 'Round 2: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo -n 'Round 3: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo '-------------------------------------'
-echo '               Test J'
 echo ' Enable local-search'
 echo '-------------------------------------'
 echo ' - fragment_fache: on'
