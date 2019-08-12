@@ -4,7 +4,7 @@ echo -n '
 * Import 300 posts ... '
 
 cd hexo-theme-unit-test/source/_posts/
-git clone https://github.com/SukkaLab/hexo-5000-posts.git --depth=1 --quiet
+git clone https://github.com/SukkaLab/hexo-many-posts.git --depth=1 --quiet
 rm -rf .git
 cd ../..
 
@@ -59,10 +59,6 @@ npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
-echo -n 'Round 3: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
 
 echo '-------------------------------------'
 echo '               Test B'
@@ -100,10 +96,6 @@ npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
-echo -n 'Round 3: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
 
 echo '-------------------------------------'
 echo '               Test C'
@@ -141,10 +133,6 @@ npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
-echo -n 'Round 3: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
 
 echo '-------------------------------------'
 echo '               Test D'
@@ -182,10 +170,6 @@ npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
-echo -n 'Round 3: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
 
 echo '-------------------------------------'
 echo '               Test E'
@@ -223,10 +207,6 @@ npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
-echo -n 'Round 3: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
 
 
 echo '-------------------------------------'
@@ -265,25 +245,6 @@ npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
-echo -n 'Round 3: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo -n 'Round 1: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo -n 'Round 2: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo -n 'Round 3: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
 
 echo '-------------------------------------'
 echo '               Test H'
@@ -321,7 +282,3 @@ npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
-echo -n 'Round 3: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'

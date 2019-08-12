@@ -15,7 +15,7 @@ before_install:
 install:
   - git clone https://github.com/theme-suka/hexo-theme-unit-test
   - cd hexo-theme-unit-test
-  - git clone https://github.com/SukkaW/hexo-theme-suka themes/suka --depth=2
+  - git clone https://github.com/SukkaW/hexo-theme-suka themes/suka --depth=1
   - npm i > /dev/null
   - cd themes/suka
   - yarn install --production > /dev/null
