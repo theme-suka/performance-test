@@ -3,7 +3,7 @@
 echo -n '
 * Import 300 posts ... '
 
-cd cd hexo-theme-unit-test/source/_posts/
+cd hexo-theme-unit-test/source/_posts/
 git clone https://github.com/SukkaLab/hexo-5000-posts.git --depth=1 --quiet
 rm -rf .git
 cd ../..
@@ -37,35 +37,32 @@ echo ' - suka theme prism highlight: off'
 echo ' - suka theme local-search: off'
 echo '-------------------------------------'
 
-../bin/yq themes/suka/_config.yml fragment_cache true
+../bin/yq w -i themes/suka/_config.yml fragment_cache true
 
-../bin/yq _config.yml highlight.enable false
-../bin/yq _config.yml highlight.line_number false
-../bin/yq _config.yml highlight.auto_detect false
-../bin/yq _config.yml highlight.tab_replace false
+../bin/yq w -i _config.yml highlight.enable false
+../bin/yq w -i _config.yml highlight.line_number false
+../bin/yq w -i _config.yml highlight.auto_detect false
+../bin/yq w -i _config.yml highlight.tab_replace false
 
-../bin/yq _config.yml suka_theme.prism.enable false
-../bin/yq _config.yml suka_theme.prism.line_number false
+../bin/yq w -i _config.yml suka_theme.prism.enable false
+../bin/yq w -i _config.yml suka_theme.prism.line_number false
 
-../bin/yq _config.yml suka_theme.search.enable false
+../bin/yq w -i _config.yml suka_theme.search.enable false
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 2: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 3: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo '-------------------------------------'
 echo '               Test B'
@@ -81,35 +78,32 @@ echo ' - suka theme prism highlight: off'
 echo ' - suka theme local-search: off'
 echo '-------------------------------------'
 
-../bin/yq themes/suka/_config.yml fragment_cache false
+../bin/yq w -i themes/suka/_config.yml fragment_cache false
 
-../bin/yq _config.yml highlight.enable false
-../bin/yq _config.yml highlight.line_number false
-../bin/yq _config.yml highlight.auto_detect false
-../bin/yq _config.yml highlight.tab_replace false
+../bin/yq w -i _config.yml highlight.enable false
+../bin/yq w -i _config.yml highlight.line_number false
+../bin/yq w -i _config.yml highlight.auto_detect false
+../bin/yq w -i _config.yml highlight.tab_replace false
 
-../bin/yq _config.yml suka_theme.prism.enable false
-../bin/yq _config.yml suka_theme.prism.line_number false
+../bin/yq w -i _config.yml suka_theme.prism.enable false
+../bin/yq w -i _config.yml suka_theme.prism.line_number false
 
-../bin/yq _config.yml suka_theme.search.enable false
+../bin/yq w -i _config.yml suka_theme.search.enable false
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 2: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 3: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo '-------------------------------------'
 echo '               Test C'
@@ -125,35 +119,32 @@ echo ' - suka theme prism highlight: off'
 echo ' - suka theme local-search: off'
 echo '-------------------------------------'
 
-../bin/yq themes/suka/_config.yml fragment_cache true
+../bin/yq w -i themes/suka/_config.yml fragment_cache true
 
-../bin/yq _config.yml highlight.enable true
-../bin/yq _config.yml highlight.line_number false
-../bin/yq _config.yml highlight.auto_detect false
-../bin/yq _config.yml highlight.tab_replace false
+../bin/yq w -i _config.yml highlight.enable true
+../bin/yq w -i _config.yml highlight.line_number false
+../bin/yq w -i _config.yml highlight.auto_detect false
+../bin/yq w -i _config.yml highlight.tab_replace false
 
-../bin/yq _config.yml suka_theme.prism.enable false
-../bin/yq _config.yml suka_theme.prism.line_number false
+../bin/yq w -i _config.yml suka_theme.prism.enable false
+../bin/yq w -i _config.yml suka_theme.prism.line_number false
 
-../bin/yq _config.yml suka_theme.search.enable false
+../bin/yq w -i _config.yml suka_theme.search.enable false
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 2: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 3: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo '-------------------------------------'
 echo '               Test D'
@@ -169,35 +160,32 @@ echo ' - suka theme prism highlight: off'
 echo ' - suka theme local-search: off'
 echo '-------------------------------------'
 
-../bin/yq themes/suka/_config.yml fragment_cache true
+../bin/yq w -i themes/suka/_config.yml fragment_cache true
 
-../bin/yq _config.yml highlight.enable true
-../bin/yq _config.yml highlight.line_number true
-../bin/yq _config.yml highlight.auto_detect false
-../bin/yq _config.yml highlight.tab_replace false
+../bin/yq w -i _config.yml highlight.enable true
+../bin/yq w -i _config.yml highlight.line_number true
+../bin/yq w -i _config.yml highlight.auto_detect false
+../bin/yq w -i _config.yml highlight.tab_replace false
 
-../bin/yq _config.yml suka_theme.prism.enable false
-../bin/yq _config.yml suka_theme.prism.line_number false
+../bin/yq w -i _config.yml suka_theme.prism.enable false
+../bin/yq w -i _config.yml suka_theme.prism.line_number false
 
-../bin/yq _config.yml suka_theme.search.enable false
+../bin/yq w -i _config.yml suka_theme.search.enable false
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 2: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 3: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo '-------------------------------------'
 echo '               Test E'
@@ -213,35 +201,32 @@ echo ' - suka theme prism highlight: off'
 echo ' - suka theme local-search: off'
 echo '-------------------------------------'
 
-../bin/yq themes/suka/_config.yml fragment_cache true
+../bin/yq w -i themes/suka/_config.yml fragment_cache true
 
-../bin/yq _config.yml highlight.enable true
-../bin/yq _config.yml highlight.line_number false
-../bin/yq _config.yml highlight.auto_detect false
-../bin/yq _config.yml highlight.tab_replace true
+../bin/yq w -i _config.yml highlight.enable true
+../bin/yq w -i _config.yml highlight.line_number false
+../bin/yq w -i _config.yml highlight.auto_detect false
+../bin/yq w -i _config.yml highlight.tab_replace true
 
-../bin/yq _config.yml suka_theme.prism.enable false
-../bin/yq _config.yml suka_theme.prism.line_number false
+../bin/yq w -i _config.yml suka_theme.prism.enable false
+../bin/yq w -i _config.yml suka_theme.prism.line_number false
 
-../bin/yq _config.yml suka_theme.search.enable false
+../bin/yq w -i _config.yml suka_theme.search.enable false
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 2: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 3: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 
 echo '-------------------------------------'
@@ -258,35 +243,32 @@ echo ' - suka theme prism highlight: off'
 echo ' - suka theme local-search: off'
 echo '-------------------------------------'
 
-../bin/yq themes/suka/_config.yml fragment_cache true
+../bin/yq w -i themes/suka/_config.yml fragment_cache true
 
-../bin/yq _config.yml highlight.enable true
-../bin/yq _config.yml highlight.line_number true
-../bin/yq _config.yml highlight.auto_detect false
-../bin/yq _config.yml highlight.tab_replace true
+../bin/yq w -i _config.yml highlight.enable true
+../bin/yq w -i _config.yml highlight.line_number true
+../bin/yq w -i _config.yml highlight.auto_detect false
+../bin/yq w -i _config.yml highlight.tab_replace true
 
-../bin/yq _config.yml suka_theme.prism.enable false
-../bin/yq _config.yml suka_theme.prism.line_number false
+../bin/yq w -i _config.yml suka_theme.prism.enable false
+../bin/yq w -i _config.yml suka_theme.prism.line_number false
 
-../bin/yq _config.yml suka_theme.search.enable false
+../bin/yq w -i _config.yml suka_theme.search.enable false
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 2: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 3: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 
 echo '-------------------------------------'
@@ -303,35 +285,32 @@ echo ' - suka theme prism highlight: on'
 echo ' - suka theme local-search: off'
 echo '-------------------------------------'
 
-../bin/yq themes/suka/_config.yml fragment_cache true
+../bin/yq w -i themes/suka/_config.yml fragment_cache true
 
-../bin/yq _config.yml highlight.enable false
-../bin/yq _config.yml highlight.line_number false
-../bin/yq _config.yml highlight.auto_detect false
-../bin/yq _config.yml highlight.tab_replace false
+../bin/yq w -i _config.yml highlight.enable false
+../bin/yq w -i _config.yml highlight.line_number false
+../bin/yq w -i _config.yml highlight.auto_detect false
+../bin/yq w -i _config.yml highlight.tab_replace false
 
-../bin/yq _config.yml suka_theme.prism.enable true
-../bin/yq _config.yml suka_theme.prism.line_number false
+../bin/yq w -i _config.yml suka_theme.prism.enable true
+../bin/yq w -i _config.yml suka_theme.prism.line_number false
 
-../bin/yq _config.yml suka_theme.search.enable false
+../bin/yq w -i _config.yml suka_theme.search.enable false
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 2: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 3: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo '-------------------------------------'
 echo '               Test I'
@@ -347,35 +326,32 @@ echo ' - suka theme prism highlight: line_number'
 echo ' - suka theme local-search: off'
 echo '-------------------------------------'
 
-../bin/yq themes/suka/_config.yml fragment_cache true
+../bin/yq w -i themes/suka/_config.yml fragment_cache true
 
-../bin/yq _config.yml highlight.enable false
-../bin/yq _config.yml highlight.line_number false
-../bin/yq _config.yml highlight.auto_detect false
-../bin/yq _config.yml highlight.tab_replace false
+../bin/yq w -i _config.yml highlight.enable false
+../bin/yq w -i _config.yml highlight.line_number false
+../bin/yq w -i _config.yml highlight.auto_detect false
+../bin/yq w -i _config.yml highlight.tab_replace false
 
-../bin/yq _config.yml suka_theme.prism.enable true
-../bin/yq _config.yml suka_theme.prism.line_number true
+../bin/yq w -i _config.yml suka_theme.prism.enable true
+../bin/yq w -i _config.yml suka_theme.prism.line_number true
 
-../bin/yq _config.yml suka_theme.search.enable false
+../bin/yq w -i _config.yml suka_theme.search.enable false
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 2: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 3: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo '-------------------------------------'
 echo '               Test J'
@@ -391,32 +367,29 @@ echo ' - suka theme prism highlight: off'
 echo ' - suka theme local-search: on'
 echo '-------------------------------------'
 
-../bin/yq themes/suka/_config.yml fragment_cache true
+../bin/yq w -i themes/suka/_config.yml fragment_cache true
 
-../bin/yq _config.yml highlight.enable false
-../bin/yq _config.yml highlight.line_number false
-../bin/yq _config.yml highlight.auto_detect false
-../bin/yq _config.yml highlight.tab_replace false
+../bin/yq w -i _config.yml highlight.enable false
+../bin/yq w -i _config.yml highlight.line_number false
+../bin/yq w -i _config.yml highlight.auto_detect false
+../bin/yq w -i _config.yml highlight.tab_replace false
 
-../bin/yq _config.yml suka_theme.prism.enable false
-../bin/yq _config.yml suka_theme.prism.line_number false
+../bin/yq w -i _config.yml suka_theme.prism.enable false
+../bin/yq w -i _config.yml suka_theme.prism.line_number false
 
-../bin/yq _config.yml suka_theme.search.enable true
+../bin/yq w -i _config.yml suka_theme.search.enable true
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 2: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
 
 echo -n 'Round 3: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-echo ''
