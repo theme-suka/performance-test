@@ -22,6 +22,9 @@ rm -rf source/assets
 echo -n 'Done!
 '
 
+npm uninstall hexo --save
+npm install git+https://github.com/hexojs/hexo.git
+
 echo '* Test performance ... '
 echo '-------------------------------------'
 echo '               Test A'
@@ -48,6 +51,8 @@ echo '-------------------------------------'
 ../bin/yq w -i _config.yml suka_theme.prism.line_number false
 
 ../bin/yq w -i _config.yml suka_theme.search.enable false
+
+../bin/yq w -i _config.yml meta_generator true
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
@@ -151,6 +156,8 @@ echo '-------------------------------------'
 ../bin/yq w -i _config.yml suka_theme.prism.line_number false
 
 ../bin/yq w -i _config.yml suka_theme.search.enable false
+
+../bin/yq w -i _config.yml meta_generator true
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
