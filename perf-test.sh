@@ -58,10 +58,14 @@ echo -n 'Round 2: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
+echo '-------------------------------------'
+
+npm uninstall hexo --save
+npm install git+https://github.com/sukkaw/hexo.git#lazy-cheerio
 
 echo '-------------------------------------'
 echo '               Test B'
-echo ' Remove open_graph() helper'
+echo ' Using Sukka/hexo#lazy-cheerio'
 echo '-------------------------------------'
 echo ' - hexo built in highlight.js'
 echo '    - enable: false'
@@ -77,8 +81,6 @@ echo '-------------------------------------'
 ../bin/yq w -i _config.yml highlight.tab_replace false
 
 ../bin/yq w -i _config.yml meta_generator false
-
-sed -i "s|<%- open_graph({twitter_id: theme.twitter, fb_admins: theme.fb_admins, fb_app_id: theme.fb_app_id}) %>||g" themes/landscape/layout/_partial/head.ejs
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
