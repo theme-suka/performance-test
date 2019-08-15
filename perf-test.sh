@@ -1,5 +1,6 @@
 #!/bin/sh
 # Import 300 Posts
+
 echo -n '
 * Import 300 posts ... '
 
@@ -14,342 +15,38 @@ echo -n 'Done!'
 echo -n '
 * Run clean up ... '
 
-rm -rf themes/suka/source/css/highlight
-rm -rf themes/suka/source/lib/prettify/themes
-rm -rf themes/suka/source/lib/prism
+rm -rf themes/landscape/js
 rm -rf source/assets
 
 echo -n 'Done!
 '
 
-echo '* Test performance ... '
-echo '-------------------------------------'
-echo '               Test A'
-echo ' Best performance'
-echo '-------------------------------------'
-echo ' - fragment_fache: on'
-echo ' - hexo built in highlight.js'
-echo '    - enable: false'
-echo '    - line_number: false'
-echo '    - auto_detect: false'
-echo '    - tab_replace: false'
-echo ' - suka theme prism highlight: off'
-echo ' - suka theme local-search: off'
-echo '-------------------------------------'
-
-../bin/yq w -i themes/suka/_config.yml fragment_cache true
-
-../bin/yq w -i _config.yml highlight.enable false
-../bin/yq w -i _config.yml highlight.line_number false
-../bin/yq w -i _config.yml highlight.auto_detect false
-../bin/yq w -i _config.yml highlight.tab_replace false
-
-../bin/yq w -i _config.yml suka_theme.prism.enable false
-../bin/yq w -i _config.yml suka_theme.prism.line_number false
-
-../bin/yq w -i _config.yml suka_theme.search.enable false
-
-echo -n 'Round 1: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo -n 'Round 2: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo '-------------------------------------'
-echo '               Test A'
-echo ' Disable external_link'
-echo '-------------------------------------'
-echo ' - fragment_fache: on'
-echo ' - hexo built in highlight.js'
-echo '    - enable: false'
-echo '    - line_number: false'
-echo '    - auto_detect: false'
-echo '    - tab_replace: false'
-echo ' - suka theme prism highlight: off'
-echo ' - suka theme local-search: off'
-echo '-------------------------------------'
-
-../bin/yq w -i themes/suka/_config.yml fragment_cache true
-
-../bin/yq w -i _config.yml highlight.enable false
-../bin/yq w -i _config.yml highlight.line_number false
-../bin/yq w -i _config.yml highlight.auto_detect false
-../bin/yq w -i _config.yml highlight.tab_replace false
-
-../bin/yq w -i _config.yml suka_theme.prism.enable false
-../bin/yq w -i _config.yml suka_theme.prism.line_number false
-
-../bin/yq w -i _config.yml suka_theme.search.enable false
-
-../bin/yq w -i _config.yml external_link false
-
-echo -n 'Round 1: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo -n 'Round 2: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo '-------------------------------------'
-echo '               Test B'
-echo ' Disable fragment_cache'
-echo '-------------------------------------'
-echo ' - fragment_fache: off'
-echo ' - hexo built in highlight.js'
-echo '    - enable: false'
-echo '    - line_number: false'
-echo '    - auto_detect: false'
-echo '    - tab_replace: false'
-echo ' - suka theme prism highlight: off'
-echo ' - suka theme local-search: off'
-echo '-------------------------------------'
-
-../bin/yq w -i themes/suka/_config.yml fragment_cache false
-
-../bin/yq w -i _config.yml highlight.enable false
-../bin/yq w -i _config.yml highlight.line_number false
-../bin/yq w -i _config.yml highlight.auto_detect false
-../bin/yq w -i _config.yml highlight.tab_replace false
-
-../bin/yq w -i _config.yml suka_theme.prism.enable false
-../bin/yq w -i _config.yml suka_theme.prism.line_number false
-
-../bin/yq w -i _config.yml suka_theme.search.enable false
-
-echo -n 'Round 1: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo -n 'Round 2: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
+echo -n '
+* Using hexo-theme-landscape ... '
+../bin/yq w -i _config.yml theme landscape
 
 
-echo '-------------------------------------'
-echo '               Test C'
-echo ' Enable highlight alone'
-echo '-------------------------------------'
-echo ' - fragment_fache: on'
-echo ' - hexo built in highlight.js'
-echo '    - enable: true'
-echo '    - line_number: false'
-echo '    - auto_detect: false'
-echo '    - tab_replace: false'
-echo ' - suka theme prism highlight: off'
-echo ' - suka theme local-search: off'
-echo '-------------------------------------'
-
-../bin/yq w -i themes/suka/_config.yml fragment_cache true
-
-../bin/yq w -i _config.yml highlight.enable true
-../bin/yq w -i _config.yml highlight.line_number false
-../bin/yq w -i _config.yml highlight.auto_detect false
-../bin/yq w -i _config.yml highlight.tab_replace false
-
-../bin/yq w -i _config.yml suka_theme.prism.enable false
-../bin/yq w -i _config.yml suka_theme.prism.line_number false
-
-../bin/yq w -i _config.yml suka_theme.search.enable false
-
-echo -n 'Round 1: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo -n 'Round 2: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-
-echo '-------------------------------------'
-echo '               Test D'
-echo ' Enable highlight & line_number'
-echo '-------------------------------------'
-echo ' - fragment_fache: on'
-echo ' - hexo built in highlight.js'
-echo '    - enable: true'
-echo '    - line_number: true'
-echo '    - auto_detect: false'
-echo '    - tab_replace: false'
-echo ' - suka theme prism highlight: off'
-echo ' - suka theme local-search: off'
-echo '-------------------------------------'
-
-../bin/yq w -i themes/suka/_config.yml fragment_cache true
-
-../bin/yq w -i _config.yml highlight.enable true
-../bin/yq w -i _config.yml highlight.line_number true
-../bin/yq w -i _config.yml highlight.auto_detect false
-../bin/yq w -i _config.yml highlight.tab_replace false
-
-../bin/yq w -i _config.yml suka_theme.prism.enable false
-../bin/yq w -i _config.yml suka_theme.prism.line_number false
-
-../bin/yq w -i _config.yml suka_theme.search.enable false
-
-echo -n 'Round 1: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo -n 'Round 2: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-
-echo '-------------------------------------'
-echo '               Test E'
-echo ' Enable highlight & tab_replace'
-echo '-------------------------------------'
-echo ' - fragment_fache: on'
-echo ' - hexo built in highlight.js'
-echo '    - enable: true'
-echo '    - line_number: false'
-echo '    - auto_detect: false'
-echo '    - tab_replace: true'
-echo ' - suka theme prism highlight: off'
-echo ' - suka theme local-search: off'
-echo '-------------------------------------'
-
-../bin/yq w -i themes/suka/_config.yml fragment_cache true
-
-../bin/yq w -i _config.yml highlight.enable true
-../bin/yq w -i _config.yml highlight.line_number false
-../bin/yq w -i _config.yml highlight.auto_detect false
-../bin/yq w -i _config.yml highlight.tab_replace true
-
-../bin/yq w -i _config.yml suka_theme.prism.enable false
-../bin/yq w -i _config.yml suka_theme.prism.line_number false
-
-../bin/yq w -i _config.yml suka_theme.search.enable false
-
-echo -n 'Round 1: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo -n 'Round 2: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-
-
-echo '-------------------------------------'
-echo '               Test F'
-echo ' Enable highlight, line_number & tab_replace'
-echo '-------------------------------------'
-echo ' - fragment_fache: on'
-echo ' - hexo built in highlight.js'
-echo '    - enable: true'
-echo '    - line_number: true'
-echo '    - auto_detect: false'
-echo '    - tab_replace: true'
-echo ' - suka theme prism highlight: off'
-echo ' - suka theme local-search: off'
-echo '-------------------------------------'
-
-../bin/yq w -i themes/suka/_config.yml fragment_cache true
-
-../bin/yq w -i _config.yml highlight.enable true
-../bin/yq w -i _config.yml highlight.line_number true
-../bin/yq w -i _config.yml highlight.auto_detect false
-../bin/yq w -i _config.yml highlight.tab_replace true
-
-../bin/yq w -i _config.yml suka_theme.prism.enable false
-../bin/yq w -i _config.yml suka_theme.prism.line_number false
-
-../bin/yq w -i _config.yml suka_theme.search.enable false
-
-echo -n 'Round 1: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo -n 'Round 2: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-
-echo '-------------------------------------'
-echo '               Test G'
-echo ' Enable local-search'
-echo '-------------------------------------'
-echo ' - fragment_fache: on'
-echo ' - hexo built in highlight.js'
-echo '    - enable: false'
-echo '    - line_number: false'
-echo '    - auto_detect: false'
-echo '    - tab_replace: false'
-echo ' - suka theme prism highlight: off'
-echo ' - suka theme local-search: on'
-echo '-------------------------------------'
-
-../bin/yq w -i themes/suka/_config.yml fragment_cache true
-
-../bin/yq w -i _config.yml highlight.enable false
-../bin/yq w -i _config.yml highlight.line_number false
-../bin/yq w -i _config.yml highlight.auto_detect false
-../bin/yq w -i _config.yml highlight.tab_replace false
-
-../bin/yq w -i _config.yml suka_theme.prism.enable false
-../bin/yq w -i _config.yml suka_theme.prism.line_number false
-
-../bin/yq w -i _config.yml suka_theme.search.enable true
-
-echo -n 'Round 1: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo -n 'Round 2: '
-npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
-
-echo '-------------------------------------'
-echo 'Install latest Hexo from GitHub...'
+echo "Install latest Hexo..."
 npm uninstall hexo --save
 npm install git+https://github.com/hexojs/hexo.git
 
+echo '* Test performance ... '
 echo '-------------------------------------'
-echo '               Test H'
-echo ' Disable meta_generator'
+echo '               Test A'
+echo ' Baseline'
 echo '-------------------------------------'
-echo ' - fragment_fache: on'
 echo ' - hexo built in highlight.js'
 echo '    - enable: false'
 echo '    - line_number: false'
 echo '    - auto_detect: false'
 echo '    - tab_replace: false'
-echo ' - suka theme prism highlight: off'
-echo ' - suka theme local-search: off'
+echo ' - meta_generator: off'
 echo '-------------------------------------'
-
-../bin/yq w -i themes/suka/_config.yml fragment_cache true
 
 ../bin/yq w -i _config.yml highlight.enable false
 ../bin/yq w -i _config.yml highlight.line_number false
 ../bin/yq w -i _config.yml highlight.auto_detect false
 ../bin/yq w -i _config.yml highlight.tab_replace false
-
-../bin/yq w -i _config.yml suka_theme.prism.enable false
-../bin/yq w -i _config.yml suka_theme.prism.line_number false
-
-../bin/yq w -i _config.yml suka_theme.search.enable false
-
 ../bin/yq w -i _config.yml meta_generator false
 
 echo -n 'Round 1: '
@@ -363,20 +60,25 @@ npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
 echo '-------------------------------------'
-echo '               Test I'
-echo ' Comment meta_generator'
+echo '               Test B'
+echo ' Remove open_graph() helper'
 echo '-------------------------------------'
-echo ' - fragment_fache: on'
 echo ' - hexo built in highlight.js'
 echo '    - enable: false'
 echo '    - line_number: false'
 echo '    - auto_detect: false'
 echo '    - tab_replace: false'
-echo ' - suka theme prism highlight: off'
-echo ' - suka theme local-search: off'
+echo ' - meta_generator: off'
 echo '-------------------------------------'
 
-sed -i "s|filter.register('after_render:html', require('./meta_generator'))|//filter.register('after_render:html', require('./meta_generator'))|g"  ./node_modules/hexo/lib/plugins/filter/index.js
+../bin/yq w -i _config.yml highlight.enable false
+../bin/yq w -i _config.yml highlight.line_number false
+../bin/yq w -i _config.yml highlight.auto_detect false
+../bin/yq w -i _config.yml highlight.tab_replace false
+
+../bin/yq w -i _config.yml meta_generator false
+
+sed -i "s|<%- open_graph({twitter_id: theme.twitter, fb_admins: theme.fb_admins, fb_app_id: theme.fb_app_id}) %>||g" themes/landscape/layout/_partial/head.ejs
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
