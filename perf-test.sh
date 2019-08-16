@@ -60,7 +60,7 @@ npm install git+https://github.com/curbengh/hexo.git#metagen-cheerio
 
 echo '-------------------------------------'
 echo '               Test B'
-echo ' Use https://github.com/sukkaw/hexo.git#lazy-moment'
+echo ' Use https://github.com/curbengh/hexo.git#metagen-cheerio'
 echo '-------------------------------------'
 echo ' - hexo built in highlight.js'
 echo '    - enable: false'
