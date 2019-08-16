@@ -54,6 +54,7 @@ echo '-------------------------------------'
 ../bin/yq w -i _config.yml suka_theme.search.enable false
 
 ../bin/yq w -i _config.yml meta_generator false
+../bin/yq w -i _config.yml external_link true
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
@@ -67,7 +68,7 @@ cat perf.log | grep 'generated in'
 
 echo '-------------------------------------'
 echo '               Test B'
-echo ' Remove useless files'
+echo ' Disable external link'
 echo '-------------------------------------'
 echo ' - fragment_fache: on'
 echo ' - hexo built in highlight.js'
@@ -79,17 +80,20 @@ echo ' - suka theme prism highlight: off'
 echo ' - suka theme local-search: off'
 echo '-------------------------------------'
 
-# Run Clean up
-echo -n '
-* Run clean up ... '
+../bin/yq w -i themes/suka/_config.yml fragment_cache true
 
-rm -rf node_modules/**/test/**/*
-rm -rf node_modules/**/*.test
-rm -rf themes/suka/node_modules/**/*.test
-rm -rf node_modules/**/docs/**/*
+../bin/yq w -i _config.yml highlight.enable false
+../bin/yq w -i _config.yml highlight.line_number false
+../bin/yq w -i _config.yml highlight.auto_detect false
+../bin/yq w -i _config.yml highlight.tab_replace false
 
-echo -n 'Done!
-'
+../bin/yq w -i _config.yml suka_theme.prism.enable false
+../bin/yq w -i _config.yml suka_theme.prism.line_number false
+
+../bin/yq w -i _config.yml suka_theme.search.enable false
+
+../bin/yq w -i _config.yml meta_generator false
+../bin/yq w -i _config.yml external_link false
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
