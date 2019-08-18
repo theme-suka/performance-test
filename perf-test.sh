@@ -58,6 +58,8 @@ sed -i "s|filter.register('after_render:html', require('./meta_generator'))|//fi
 ../bin/yq w -i _config.yml meta_generator false
 ../bin/yq w -i _config.yml external_link false
 
+../bin/yq w -i themes/suka/_config.yml toc.enable false
+
 echo -n 'Round 1: '
 npm run clean > /dev/null
 npm run generate > perf.log
@@ -68,9 +70,12 @@ npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
+npm uninstall hexo --save
+npm install git+https://github.com/sukkaw/hexo.git#bump-cheerio-1.x
+
 echo '-------------------------------------'
 echo '               Test B'
-echo ' Disable toc'
+echo ' Use sukkaw/hexo.git#bump-cheerio-1.x'
 echo '-------------------------------------'
 echo ' - fragment_fache: on'
 echo ' - hexo built in highlight.js'
@@ -81,6 +86,8 @@ echo '    - tab_replace: false'
 echo ' - suka theme prism highlight: off'
 echo ' - suka theme local-search: off'
 echo '-------------------------------------'
+
+sed -i "s|filter.register('after_render:html', require('./meta_generator'))|//filter.register('after_render:html', require('./meta_generator'))|g" ./node_modules/hexo/lib/plugins/filter/index.js
 
 ../bin/yq w -i themes/suka/_config.yml fragment_cache true
 
