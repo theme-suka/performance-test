@@ -71,11 +71,11 @@ npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
 npm uninstall hexo --save
-npm install git+https://github.com/curbengh/hexo.git#og-domparser
+npm install git+https://github.com/sukkaw/hexo.git#og-img-regex
 
 echo '-------------------------------------'
 echo '               Test B'
-echo ' Use curbengh:og-domparser'
+echo ' Use sukkaw:og-img-regex'
 echo '-------------------------------------'
 echo ' - fragment_fache: on'
 echo ' - hexo built in highlight.js'
