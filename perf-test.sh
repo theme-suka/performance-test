@@ -29,7 +29,7 @@ echo '-------------------------------------'
 echo '* Test performance ... '
 echo '-------------------------------------'
 echo '               Test A'
-echo ' Baseline with meta_generator comment out'
+echo ' Baseline with meta_generator commented out & toc disabled'
 echo '-------------------------------------'
 echo ' - fragment_fache: on'
 echo ' - hexo built in highlight.js'
@@ -71,11 +71,11 @@ npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
 npm uninstall hexo --save
-npm install git+https://github.com/sukkaw/hexo.git#bump-cheerio-1.x
+npm install git+https://github.com/curbengh/hexo.git#og-domparser
 
 echo '-------------------------------------'
 echo '               Test B'
-echo ' Use sukkaw/hexo.git#bump-cheerio-1.x'
+echo ' Use curbengh:og-domparser'
 echo '-------------------------------------'
 echo ' - fragment_fache: on'
 echo ' - hexo built in highlight.js'
