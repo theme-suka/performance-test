@@ -59,11 +59,11 @@ npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
 npm uninstall hexo --save
-npm install git+https://github.com/sukkaw/hexo.git#og-img-regex
+npm install git+https://github.com/sukkaw/hexo.git#open-graph-img
 
 echo '-------------------------------------'
 echo '               Test B'
-echo ' Use sukkaw:og-img-regex'
+echo ' Use sukkaw:open-graph-img'
 echo '-------------------------------------'
 echo ' - fragment_fache: on'
 echo ' - hexo built in highlight.js'
