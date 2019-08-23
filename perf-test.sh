@@ -94,10 +94,10 @@ npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
 npm uninstall hexo --save
-npm install git+https://github.com/sukkaw/hexo.git#lazy-cheerio
+npm install git+https://github.com/sukkaw/hexo.git#test-indexof
 echo '-------------------------------------'
 echo '               Test C'
-echo ' Lazy cheerio sukkaw:lazy-cheerio'
+echo ' Lazy cheerio sukkaw:test-indexof'
 echo '-------------------------------------'
 echo ' - fragment_fache: on'
 echo ' - hexo built in highlight.js'
