@@ -52,8 +52,7 @@ npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
-echo -n 'Round 2: '
-npm run clean > /dev/null
+echo -n 'Hot process: '
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
@@ -69,8 +68,7 @@ npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
-echo -n 'Round 2: '
-npm run clean > /dev/null
+echo -n 'Hot process: '
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
@@ -91,8 +89,7 @@ npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
-echo -n 'Round 2: '
-npm run clean > /dev/null
+echo -n 'Hot process: '
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
@@ -108,9 +105,6 @@ npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
-echo -n 'Round 2: '
-npm run clean > /dev/null
+echo -n 'Hot process: '
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
-
-
