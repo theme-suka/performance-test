@@ -22,8 +22,6 @@ rm -rf source/assets
 echo -n 'Done!
 '
 
-../bin/yq w -i themes/suka/_config.yml fragment_cache true
-
 ../bin/yq w -i _config.yml highlight.enable false
 ../bin/yq w -i _config.yml highlight.line_number false
 ../bin/yq w -i _config.yml highlight.auto_detect false
@@ -37,13 +35,17 @@ echo -n 'Done!
 ../bin/yq w -i _config.yml external_link false
 ../bin/yq w -i _config.yml meta_generator false
 
-echo '-------------------------------------'
-echo '               Test A'
-echo ' Hexo master branch'
-echo '-------------------------------------'
+
 
 npm uninstall hexo --save
 npm install hexojs/hexo
+
+echo '-------------------------------------'
+echo '               Test A'
+echo ' Hexo master branch (fragment cache on)'
+echo '-------------------------------------'
+
+../bin/yq w -i themes/suka/_config.yml fragment_cache true
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
@@ -57,11 +59,10 @@ cat perf.log | grep 'generated in'
 
 echo '-------------------------------------'
 echo '               Test B'
-echo ' Hexo PR 3756'
+echo ' Hexo master branch (fragment cache off)'
 echo '-------------------------------------'
 
-npm uninstall hexo --save
-npm install dailyrandomphoto/hexo#improve-cache
+../bin/yq w -i themes/suka/_config.yml fragment_cache false
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
@@ -72,4 +73,44 @@ echo -n 'Round 2: '
 npm run clean > /dev/null
 npm run generate > perf.log
 cat perf.log | grep 'generated in'
+
+echo '-------------------------------------'
+
+npm uninstall hexo --save
+npm install dailyrandomphoto/hexo#improve-cache
+
+echo '-------------------------------------'
+echo '               Test C'
+echo ' Hexo PR 3756 (fragment cache on)'
+echo '-------------------------------------'
+
+../bin/yq w -i themes/suka/_config.yml fragment_cache true
+
+echo -n 'Round 1: '
+npm run clean > /dev/null
+npm run generate > perf.log
+cat perf.log | grep 'generated in'
+
+echo -n 'Round 2: '
+npm run clean > /dev/null
+npm run generate > perf.log
+cat perf.log | grep 'generated in'
+
+echo '-------------------------------------'
+echo '               Test D'
+echo ' Hexo PR 3756 (fragment cache on)'
+echo '-------------------------------------'
+
+../bin/yq w -i themes/suka/_config.yml fragment_cache false
+
+echo -n 'Round 1: '
+npm run clean > /dev/null
+npm run generate > perf.log
+cat perf.log | grep 'generated in'
+
+echo -n 'Round 2: '
+npm run clean > /dev/null
+npm run generate > perf.log
+cat perf.log | grep 'generated in'
+
 
