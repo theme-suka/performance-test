@@ -58,7 +58,7 @@ echo ' Warehouse Streaming'
 echo '-------------------------------------'
 
 rm -rf node_modules/warehouse
-git clone -b save-streaming https://github.com/segayuu/warehouse node_modules/warehouse
+git clone -b "warehouse#save-streaming" https://github.com/segayuu/warehouse node_modules/warehouse
 echo -n 'Round 1: '
 npm run clean > /dev/null
 npm run generate > perf.log
