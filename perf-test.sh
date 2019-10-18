@@ -58,7 +58,7 @@ cat build.log | grep "Hexo version"
 cat build.log | grep "Start processing"
 cat build.log | grep "loaded in"
 cat build.log | grep "generated in"
-cat build.log | grep "Database saved"'
+cat build.log | grep "Database saved"
 
 echo '-------------------------------------'
 echo '               Test B'
