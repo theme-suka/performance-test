@@ -45,12 +45,20 @@ echo '-------------------------------------'
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
+npx --no-install hexo g --debug > build.log
+cat build.log | grep "Hexo version"
+cat build.log | grep "Start processing"
+cat build.log | grep "loaded in"
+cat build.log | grep "generated in"
+cat build.log | grep "Database saved"
 
 echo -n 'Hot process: '
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
+npx --no-install hexo g --debug > build.log
+cat build.log | grep "Hexo version"
+cat build.log | grep "Start processing"
+cat build.log | grep "loaded in"
+cat build.log | grep "generated in"
+cat build.log | grep "Database saved"'
 
 echo '-------------------------------------'
 echo '               Test B'
@@ -61,12 +69,20 @@ rm -rf node_modules/warehouse
 git clone -b "warehouse#save-streaming" https://github.com/segayuu/warehouse node_modules/warehouse
 echo -n 'Round 1: '
 npm run clean > /dev/null
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
+npx --no-install hexo g --debug > build.log
+cat build.log | grep "Hexo version"
+cat build.log | grep "Start processing"
+cat build.log | grep "loaded in"
+cat build.log | grep "generated in"
+cat build.log | grep "Database saved"
 
 echo -n 'Hot process: '
-npm run generate > perf.log
-cat perf.log | grep 'generated in'
+npx --no-install hexo g --debug > build.log
+cat build.log | grep "Hexo version"
+cat build.log | grep "Start processing"
+cat build.log | grep "loaded in"
+cat build.log | grep "generated in"
+cat build.log | grep "Database saved"
 
 echo '-------------------------------------'
 
