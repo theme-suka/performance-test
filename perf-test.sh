@@ -1,4 +1,5 @@
 #!/bin/sh
+sudo apt-get install -y time
 # Import 300 Posts
 echo -n '
 * Import 300 posts ... '
@@ -45,20 +46,22 @@ echo '-------------------------------------'
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
-npx --no-install hexo g --debug > build.log
+time -v npx --no-install hexo g --debug > build.log
 cat build.log | grep "Hexo version"
 cat build.log | grep "Start processing"
 cat build.log | grep "loaded in"
 cat build.log | grep "generated in"
 cat build.log | grep "Database saved"
+cat build.log | grep "Maximum resident set size"
 
 echo -n 'Hot process: '
-npx --no-install hexo g --debug > build.log
+time -v npx --no-install hexo g --debug > build.log
 cat build.log | grep "Hexo version"
 cat build.log | grep "Start processing"
 cat build.log | grep "loaded in"
 cat build.log | grep "generated in"
 cat build.log | grep "Database saved"
+cat build.log | grep "Maximum resident set size"
 
 echo '-------------------------------------'
 echo '               Test B'
@@ -69,20 +72,22 @@ rm -rf node_modules/warehouse
 git clone -b "warehouse#save-streaming" https://github.com/segayuu/warehouse node_modules/warehouse
 echo -n 'Round 1: '
 npm run clean > /dev/null
-npx --no-install hexo g --debug > build.log
+time -v npx --no-install hexo g --debug > build.log
 cat build.log | grep "Hexo version"
 cat build.log | grep "Start processing"
 cat build.log | grep "loaded in"
 cat build.log | grep "generated in"
 cat build.log | grep "Database saved"
+cat build.log | grep "Maximum resident set size"
 
 echo -n 'Hot process: '
-npx --no-install hexo g --debug > build.log
+time -v npx --no-install hexo g --debug > build.log
 cat build.log | grep "Hexo version"
 cat build.log | grep "Start processing"
 cat build.log | grep "loaded in"
 cat build.log | grep "generated in"
 cat build.log | grep "Database saved"
+cat build.log | grep "Maximum resident set size"
 
 echo '-------------------------------------'
 
