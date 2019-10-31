@@ -69,7 +69,7 @@ echo ' Warehouse Streaming'
 echo '-------------------------------------'
 
 rm -rf node_modules/warehouse
-git clone -b "warehouse#save-streaming" https://github.com/segayuu/warehouse node_modules/warehouse
+git clone -b "use-rfdc" https://github.com/sukkaw/warehouse node_modules/warehouse
 echo -n 'Round 1: '
 npm run clean > /dev/null
 time -v npx --no-install hexo g --debug > build.log
