@@ -65,9 +65,9 @@ echo '               Test B'
 echo ' Warehouse Streaming'
 echo '-------------------------------------'
 
+npm i rfdc
 rm -rf node_modules/warehouse/
 git clone -b "use-rfdc" https://github.com/sukkaw/warehouse node_modules/warehouse
-npm i rfdc
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
