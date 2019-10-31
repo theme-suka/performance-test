@@ -36,9 +36,6 @@ echo -n 'Done!
 ../bin/yq w -i _config.yml external_link false
 ../bin/yq w -i _config.yml meta_generator false
 
-npm uninstall hexo --save
-npm install hexojs/hexo
-
 echo '-------------------------------------'
 echo '               Test A'
 echo ' Warehouse current version'
@@ -68,8 +65,9 @@ echo '               Test B'
 echo ' Warehouse Streaming'
 echo '-------------------------------------'
 
-rm -rf node_modules/warehouse
+rm -rf node_modules/warehouse/
 git clone -b "use-rfdc" https://github.com/sukkaw/warehouse node_modules/warehouse
+
 echo -n 'Round 1: '
 npm run clean > /dev/null
 time -v npx --no-install hexo g --debug > build.log
