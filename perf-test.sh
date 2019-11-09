@@ -22,22 +22,6 @@ echo -n 'Done!
 npm uninstall hexo --save
 npm install git+https://github.com/hexojs/hexo.git
 
-echo '-------------------------------------'
-echo '* Test performance ... '
-echo '-------------------------------------'
-echo '               Test A'
-echo ' Baseline with meta_generator commented out'
-echo '-------------------------------------'
-echo ' - fragment_fache: on'
-echo ' - hexo built in highlight.js'
-echo '    - enable: false'
-echo '    - line_number: false'
-echo '    - auto_detect: false'
-echo '    - tab_replace: false'
-echo '-------------------------------------'
-
-sed -i "s|filter.register('after_render:html', require('./meta_generator'))|//filter.register('after_render:html', require('./meta_generator'))|g" ./node_modules/hexo/lib/plugins/filter/index.js
-
 ../bin/yq w -i themes/suka/_config.yml fragment_cache true
 
 ../bin/yq w -i _config.yml highlight.enable false
@@ -53,7 +37,12 @@ sed -i "s|filter.register('after_render:html', require('./meta_generator'))|//fi
 ../bin/yq w -i _config.yml meta_generator false
 ../bin/yq w -i _config.yml external_link false
 
-../bin/yq w -i themes/suka/_config.yml toc.enable true
+echo '-------------------------------------'
+echo '* Test performance ... '
+echo '-------------------------------------'
+echo '               Test A'
+echo ' Hexo master branch'
+echo '-------------------------------------'
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
@@ -66,40 +55,12 @@ npm run generate > perf.log
 cat perf.log | grep 'generated in'
 
 npm uninstall hexo --save
-npm install git+https://github.com/sukkaw/hexo.git#lazy-cheerio-for-toc
+npm install git+https://github.com/sukkaw/hexo.git#htmlparser2-toc
 
 echo '-------------------------------------'
 echo '               Test B'
-echo ' Use sukkaw:lazy-cheerio-for-toc'
+echo ' Use sukkaw:htmlparser2-toc'
 echo '-------------------------------------'
-echo ' - fragment_fache: on'
-echo ' - hexo built in highlight.js'
-echo '    - enable: false'
-echo '    - line_number: false'
-echo '    - auto_detect: false'
-echo '    - tab_replace: false'
-echo '-------------------------------------'
-
-sed -i "s|filter.register('after_render:html', require('./meta_generator'))|//filter.register('after_render:html', require('./meta_generator'))|g" ./node_modules/hexo/lib/plugins/filter/index.js
-
-sed -i "s|filter.register('after_render:html', require('./meta_generator'))|//filter.register('after_render:html', require('./meta_generator'))|g" ./node_modules/hexo/lib/plugins/filter/index.js
-
-../bin/yq w -i themes/suka/_config.yml fragment_cache true
-
-../bin/yq w -i _config.yml highlight.enable false
-../bin/yq w -i _config.yml highlight.line_number false
-../bin/yq w -i _config.yml highlight.auto_detect false
-../bin/yq w -i _config.yml highlight.tab_replace false
-
-../bin/yq w -i _config.yml suka_theme.prism.enable false
-../bin/yq w -i _config.yml suka_theme.prism.line_number false
-
-../bin/yq w -i _config.yml suka_theme.search.enable false
-
-../bin/yq w -i _config.yml meta_generator false
-../bin/yq w -i _config.yml external_link false
-
-../bin/yq w -i themes/suka/_config.yml toc.enable true
 
 echo -n 'Round 1: '
 npm run clean > /dev/null
