@@ -4,6 +4,7 @@ node_js:
   - "8"
   - "10"
   - "12"
+  - "13"
 git:
   depth: 5
   quiet: true
@@ -13,12 +14,8 @@ before_install:
 install:
   - git clone https://github.com/theme-suka/hexo-theme-unit-test
   - cd hexo-theme-unit-test
-  - git clone https://github.com/sukkaw/hexo-theme-suka themes/suka --depth=1
+  - git clone https://github.com/litten/hexo-theme-yilia themes/yilla --depth=1
   - npm i > /dev/null
-  - cd themes/suka
-  - yarn install --production > /dev/null
-  - cd ../..
-  - \cp -f ./theme_config.yml themes/suka/_config.yml
   - cd ..
 script:
   - chmod +x ./perf-test.sh
